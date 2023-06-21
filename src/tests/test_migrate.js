@@ -1,6 +1,8 @@
 const sequelize = require('../utils/connection');
 require('../models/Book')
 require('../models/Student')
+require("../models/Author")
+require('../models/Course')
 
 
 const main = async() => {

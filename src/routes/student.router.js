@@ -1,4 +1,4 @@
-const { getAll, create, getOne, remove, update } = require('../controlleres/student.controllers');
+const { getAll, create, getOne, remove, update } = require('../controllers/student.controllers');
 const express = require('express');
 
 const routerStudent = express.Router();

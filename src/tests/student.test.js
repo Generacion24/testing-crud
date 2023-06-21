@@ -28,11 +28,28 @@ test("GET -> '/api/v1/students' should return status code 200", async()=>{
     expect(res.body).toHaveLength(1)
 })
 
-test("GET -> `/api/v1/students/:id` should return status code 200, and res.body.firstName should return Jose", async()=>{
+test("GET ONE-> `/api/v1/students/:id` should return status code 200, and res.body.firstName should return Jose", async()=>{
     
     const res = await supertest(app).get(`/api/v1/students/${studentId}`)
 
     expect(res.status).toBe(200)
     expect(res.body.firstName).toBe("Jose")
+})
+
+test("PUT -> '/api/v1/students/:id' should return status code 200 and res.body.name = body.name" , async()=>{
+    const body = {
+        firstName: "Jose"
+    }
+    const res = await supertest(app)
+        .put(`/api/v1/students/${studentId}`)
+        .send(body)
+
+    expect(res.status).toBe(200)
+    expect(res.body.firstName).toBe(body.firstName)
+})
+
+test("Delete -> '/api/v1/students/:id' should return status code 204 ", async()=>{
+    const res = await supertest(app).delete(`/api/v1/students/${studentId}`)
+    expect(res.status).toBe(204)
 })
 
